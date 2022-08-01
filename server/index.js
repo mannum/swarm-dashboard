@@ -10,8 +10,14 @@ const port = process.env.PORT || 8080;
 
 const baseOptions = {
   method: 'GET',
-  socketPath: '/var/run/docker.sock',
 };
+
+if(process.env.DOCKER_HOST) {
+    baseOptions['host'] = process.env.DOCKER_HOST
+    baseOptions['port'] = process.env.DOCKER_PORT || 2375
+}else{
+    baseOptions['socketPath'] = process.env.DOCKER_SOCKET || '/var/run/docker.sock'
+}
 
 const sha1OfData = data =>
   createHash('sha1').update(JSON.stringify(data)).digest('hex');

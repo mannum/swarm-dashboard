@@ -37,6 +37,9 @@ services:
     - 8080:8080
     environment:
       PORT: 8080
+      # DOCKER_SOCKET: /var/run/docker.sock # Optionally customise where the docker socket is
+      # DOCKER_HOST: 127.0.0.1 # Or provide a tcp connection to a docker proxy process.
+      # DOCKER_PORT: 2375
     deploy:
       replicas: 1
       placement:
