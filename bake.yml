@@ -1,0 +1,7 @@
+version: "2.4"
+services:
+  swarm-dashboard:
+    image: gosuperscript/swarm-dashboard
+    build:
+      context: .
+      target: release
